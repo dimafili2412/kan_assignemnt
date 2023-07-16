@@ -1,6 +1,7 @@
 // Dependencies
 const express = require('express');
 const mysql = require('mysql');
+const path = require('path');
 
 // Create Express server
 const app = express();
@@ -20,6 +21,10 @@ db.connect((err) => {
   }
   console.log('MySQL Connected...');
 });
+
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '/client/build')));
 
 // Define routes
 
